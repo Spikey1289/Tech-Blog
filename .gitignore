@@ -7,3 +7,4 @@ package-lock.json
 .prettierignore
 .prettierrc.json
 node_modules
+.vscode

@@ -11,29 +11,29 @@ BlogPost.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    post_title: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: 'required',
-        },
-      },
+      // validate: {
+      //   notEmpty: {
+      //     args: true,
+      //     msg: 'required',
+      //   },
+      // },
     },
-    body: {
+    post_body: {
       type: DataTypes.TEXT,
       allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: 'required',
-        },
-        len: {
-          args: [1, 2000],
-          msg: 'message length between 1-2000 please',
-        },
-      },
+      // validate: {
+        // notEmpty: {
+        //   args: true,
+        //   msg: 'required',
+        // },
+        // len: {
+        //   args: [1, 2000],
+        //   msg: 'message length between 1-2000 please',
+        // },
+      // },
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -47,7 +47,7 @@ BlogPost.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'BlogPost',
+    modelName: 'blogpost',
   }
 );
 
