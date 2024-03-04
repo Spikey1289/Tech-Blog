@@ -14,26 +14,22 @@ BlogPost.init(
     post_title: {
       type: DataTypes.STRING,
       allowNull: false,
-      // validate: {
-      //   notEmpty: {
-      //     args: true,
-      //     msg: 'required',
-      //   },
-      // },
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'required',
+        },
+      },
     },
     post_body: {
       type: DataTypes.TEXT,
       allowNull: false,
-      // validate: {
-        // notEmpty: {
-        //   args: true,
-        //   msg: 'required',
-        // },
-        // len: {
-        //   args: [1, 2000],
-        //   msg: 'message length between 1-2000 please',
-        // },
-      // },
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'required',
+        },
+      },
     },
     user_id: {
       type: DataTypes.INTEGER,

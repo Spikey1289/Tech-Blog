@@ -19,10 +19,6 @@ Comment.init(
           args: true,
           msg: 'required',
         },
-        len: {
-          args: [1, 2000],
-          msg: 'message length between 1-2000 please',
-        },
       },
     },
     post_id:{
