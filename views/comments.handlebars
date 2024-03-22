@@ -1,0 +1,42 @@
+<section class="Single-Post" data-id="{{blogPost.id}}">
+    <div>
+        <h2 class="Post-Title">
+            {{blogPost.post_title}}
+        </h2>
+        <span class="Post-Created-By">Created by {{blogPost.User.name}} on {{format_date blogPost.createdAt}}</span>
+        <div>
+            <p class="Post-Body">
+                {{blogPost.post_body}}
+            </p>
+            <ol>
+                {{#each blogPost.Comments as |Comment|}}
+                    <li class="Comment" data-id="{{Comment.id}}">
+                        <div>
+                            <p class="Comment-Body">
+                                {{Comment.comment_body}}
+                            </p>
+                            <span class="Comment-Created-By">Commented by <b>{{Comment.User.name}}</b> on <b>{{format_date Comment.createdAt}}</b></span>
+                        </div>
+                    </li>
+                    <br>
+                {{/each}}
+
+                <br>
+                <button class="Show-Add-Comment" type="button">Add a Comment</button>
+
+                <form hidden class="Add-Comment-Form">
+                    <section>
+                        <label class="New-Comment-Label">Comment:</label>
+                    </section>
+                    <section>
+                        <textarea class="New-Comment-Body" placeholder="Type your comment here"></textarea>
+                    </section>
+                    <section>
+                        <button class="Add-Comment-Button" type="button">Submit Comment</button>
+                    </section>
+                </form>
+            </ol>
+        </div>
+    </div>
+    <script src="/js/comments.js"></script>
+</section>

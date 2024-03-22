@@ -1,0 +1,115 @@
+<h2>{{user.name}}'s Dashboard</h2>
+
+<h3>Blog Posts:</h3>
+{{#each blogPosts as |blogPost|}}
+<section class="Post" data-id="{{blogPost.id}}">
+    <div>
+        <h4 class="Post-Title">
+            {{blogPost.post_title}}
+        </h4>
+        <div>
+            <p class="Post-Body">
+                {{post_body}}
+            </p>
+        </div>
+        <span class="Created-By">Created by <b>You</b></span>
+    </div>
+</section>
+<button class="EditPost">Edit</button>
+<button class="DeletePost">Delete</button>
+<dialog class="Delete-Modal Modal">
+    <h5>Are you sure you want to delete this post?</h5>
+    <div>
+        <h4 class="Post-Title">
+            {{blogPost.post_title}}
+        </h4>
+        <div>
+            <p class="Post-Body">
+                {{post_body}}
+            </p>
+        </div>
+    </div>
+    <button class="Delete-Post-Cancel Modal">Cancel</button>
+    <button class="Delete-Post-Confirm Modal" data-id="{{blogPost.id}}">DELETE</button>
+</dialog>
+<form hidden class="Edit-Post-Form">
+    <section>
+        <label class="New-Title-Label">Title:</label>
+    </section>
+    <section>
+        <textarea class="New-Post-Title">{{blogPost.post_title}}</textarea>
+    </section>
+    <section>
+        <label class="New-Body-Label">Post Content:</label>
+    </section>
+    <section>
+        <textarea class="New-Post-Body">{{post_body}}</textarea>
+    </section>
+    <section>
+        <button class="Edit-Post-Button" type="button" data-id="{{blogPost.id}}">Submit Edit</button>
+    </section>
+</form>
+{{/each}}
+
+<h3>Comments:</h3>
+{{#each comments as |ParentPost|}}
+<section class="ParentPost" data-id="{{ParentPost.id}}">
+    <div>
+        <h4 class="ParentPost-Title">
+            {{ParentPost.post_title}}
+        </h4>
+        <span class="ParentPost-Created-By">Created by <b>{{ParentPost.User.name}}</b></span>
+        <div>
+            <ol>
+                {{#each ParentPost.Comments as |Comment|}}
+                <li class="DashComment">
+                    <div>
+                        <p class="DashComment-Body">
+                            {{Comment.comment_body}}
+                        </p>
+                        <span class="DashComment-Created-By">Commented by <b>You</b></span>
+                    </div>
+                </li>
+                <button class="EditComment">Edit</button>
+                <button class="DeleteComment">Delete</button>
+                <dialog class="Delete-Modal Modal">
+                    <h5>Are you sure you want to delete this post?</h5>
+
+                    <div>
+                        <h4 class="ParentPost-Title">
+                            {{ParentPost.post_title}}
+                        </h4>
+                        <span class="ParentPost-Created-By">Created by <b>{{ParentPost.User.name}}</b></span>
+                        <ol>
+                            <li class="DashComment">
+                                <div>
+                                    <p class="DashComment-Body">
+                                        {{Comment.comment_body}}
+                                    </p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <button class="Delete-Comment-Cancel Modal">Cancel</button>
+                    <button class="Delete-Comment-Confirm Modal" data-id="{{Comment.id}}">DELETE</button>
+                </dialog>
+                <form hidden class="Edit-Comment-Form">
+                    <section>
+                        <label class="New-Comment-Label">Comment:</label>
+                    </section>
+                    <section>
+                        <textarea class="New-Comment-Body">{{Comment.comment_body}}</textarea>
+                    </section>
+                    <section>
+                        <button class="Edit-Comment-Button" type="button" data-id="{{Comment.id}}">Submit Comment</button>
+                    </section>
+                </form>
+                {{/each}}
+            </ol>
+        </div>
+    </div>
+</section>
+{{/each}}
+
+<script src="/js/dashboard.js"></script>

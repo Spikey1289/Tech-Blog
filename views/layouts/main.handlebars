@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Tech Blog </title>
+        <link href="
+                https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css
+                " rel="stylesheet">
+        <link rel="stylesheet" href="/css/style.css"/>
+    </head>
+
+    <body>
+        {{!-- title and nav bar --}}
+        <header>
+
+            {{!-- title --}}
+            <div class="columns">
+                <h1 class="column is-two-thirds is-offset-1">The Tech Blog</h1>
+            </div>
+
+            {{!-- navbar --}}
+            <div>
+                <nav class="">
+                    {{!-- loads page buttons the user has access to dynamically, based on if the user is logged in --}}
+                    {{#if logged_in}}
+                        <a class="button" href="/">
+                            <button class="homepage">Homepage</button>
+                        </a>
+                        <a class="button" href="/dashboard">
+                            <button class="dashboard">Dashboard</button>
+                        </a>
+
+                        <button class="logout button">Logout</button>
+                        <script src="/js/logout.js"></script>
+                    {{!-- if the user has not logged in, only displays the login button --}}
+                    {{else}}
+                        <a class="is-1 is-offset-1" href="/login">
+                            <button>LogIn</button>
+                        </a>
+                    {{/if}}
+                </nav>
+            </div>
+        </header>
+
+        {{!-- main body of handlebars --}}
+        <main>
+            {{{body}}}
+        </main>
+    </body>
+</html>

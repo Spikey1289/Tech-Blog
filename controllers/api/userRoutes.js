@@ -11,10 +11,19 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const newUser = await User.create(req.body);
+        if (!newUser) {
+            res.status(500).json({ message: 'duplicate email, user not created' });
+            return;
+        }
 
-        res.status(200).json(newUser);
+        req.session.save(() => {
+            req.session.user_id = newUser.id;
+            req.session.logged_in = true;
+
+            res.status(200).json({ user: newUser, message: 'You are now logged in!' });
+        });
     } catch (err) {
-        res.status(400).json(err);
+        res.status(500).json(err);
     }
 });
 
@@ -28,12 +37,11 @@ router.put('/:id', withAuth , async (req, res) => {
                 {
                     where: {
                         id: req.params.id,
-                        
                     },
                 }
             );
             if (!updateUser) {
-                res.status(404).json({ message: 'no blog post found with this id' });
+                res.status(404).json({ message: 'no user found with this id' });
                 return;
             }
 
@@ -97,6 +105,7 @@ router.post('/login', async (req, res) => {
         //creates session data
         req.session.save(() => {
             req.session.user_id = userData.id;
+            req.session.user_name = userData.name;
             req.session.logged_in = true;
 
             res.json({ user: userData, message: 'You are now logged in!' });

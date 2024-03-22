@@ -22,17 +22,31 @@ Comment.init(
       },
     },
     post_id:{
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'blogpost',
-            key: 'id'
-        }
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'blogpost',
+        key: 'id',
+        allowNull: false,
+      },
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'required',
+        },
+      },
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id',
+        allowNull: false,
+      },
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'required',
+        },
       },
     },
   },

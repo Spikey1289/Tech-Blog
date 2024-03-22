@@ -1,0 +1,43 @@
+{{#each blogPosts as |blogPost|}}
+<section class="Post" data-id="{{blogPost.id}}">
+    <div>
+        <h2 class="Post-Title">
+            {{blogPost.post_title}}
+        </h2>
+        <span class="Created-By">Created by {{blogPost.User.name}} on {{format_date blogPost.createdAt}}</span>
+        <div>
+            <p class="Post-Body">
+                {{post_body}}
+            </p>
+            <p>
+                Comments: {{blogPost.numComments}}
+            </p>
+        </div>
+    </div>
+</section>
+{{/each}}
+{{#if logged_in}}
+<button class="Show-Add-Post">Add a New Post</button>
+<form hidden class="Add-Post-Form">
+    <section>
+        <label class="New-Title-Label">Title:</label>
+    </section>
+    <section>
+        <textarea class="New-Post-Title" placeholder="Add a Post Title"></textarea>
+    </section>
+    <section>
+        <label class="New-Body-Label">Post Content:</label>
+    </section>
+    <section>
+        <textarea class="New-Post-Body" placeholder="Add the Content of your Post"></textarea>
+    </section>
+    <section>
+        <button class="Add-Comment-Button" type="button">Submit Comment</button>
+    </section>
+</form>
+<script src="/js/posts.js"></script>
+{{else}}
+<h4>Login to Make a New Post</h4>
+{{/if}}
+
+<script src="/js/homepage.js"></script>

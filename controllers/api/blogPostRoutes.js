@@ -3,14 +3,17 @@ const { BlogPost } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //test get
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     const allPosts = await BlogPost.findAll();
     res.status(200).json(allPosts);
 });
 
 router.post('/', withAuth, async (req, res) => {
     try {
-        const newBlogPost = await BlogPost.create(req.body);
+        const newBlogPost = await BlogPost.create({
+            ...req.body,
+            user_id: req.session.user_id,
+        });
 
         res.status(200).json(newBlogPost);
     } catch(err) {
