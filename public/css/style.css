@@ -1,44 +1,37 @@
-h1{
- font-size: 3em;
-}
-.Post, .DashComment{
-    background-color: rgba(255, 255, 255, 0);
+.Post,
+.DashComment{
     :hover {
         cursor: pointer;
-        background-color: rgba(230, 230, 230, 0.1);
+        background-color: rgba(75, 75, 75, 0.1);
     }
     :active{
-        background-color: rgb(210, 210, 210, 0.2);
+        background-color: rgba(100, 100, 100, 0.2);
+    }
+}
+.Post > *,
+.DashComment{
+    :hover {
+        cursor: pointer;
+        background-color: rgba(75, 75, 75, 0);
+    }
+
+    :active {
+        background-color: rgba(100, 100, 100, 0);
     }
 }
 
-nav a {
+/* .nav {
     text-decoration: none;
 
     :hover {
-            background-color: rgb(210, 210, 210);
+            background-color: rgba(75, 75, 75, 0.3);
             cursor: pointer;
         }
     :active {
-        background-color: rgb(190, 190, 190);
+        background-color: rgba(50, 50, 50, 0.4);
     }
 
         button {
             border-radius: 5px;
-            background-color: rgb(235, 235, 235);
         }
-}
-
-button {
-    :hover {
-            background-color: rgb(210, 210, 210);
-            cursor: pointer;
-        }
-    
-    :active {
-        background-color: rgb(190, 190, 190);
-    }
-    
-    border-radius: 5px;
-    background-color: rgb(235, 235, 235);
-}
+} */

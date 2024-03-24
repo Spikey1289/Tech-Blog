@@ -1,41 +1,36 @@
-<section class="Single-Post" data-id="{{blogPost.id}}">
+<section class="card Single-Post" data-id="{{blogPost.id}}">
     <div>
-        <h2 class="Post-Title">
+        <h2 class="card-header-title Post-Title">
             {{blogPost.post_title}}
         </h2>
-        <span class="Post-Created-By">Created by {{blogPost.User.name}} on {{format_date blogPost.createdAt}}</span>
+        <span class="card-content Post-Created-By">Created by <b>{{blogPost.User.name}}</b> on <b>{{format_date blogPost.createdAt}}</b></span>
         <div>
-            <p class="Post-Body">
+            <p class="card-content Post-Body">
                 {{blogPost.post_body}}
             </p>
-            <ol>
+            <ol class="ml-6 mr-5">
                 {{#each blogPost.Comments as |Comment|}}
-                    <li class="Comment" data-id="{{Comment.id}}">
+                    <li class="card Comment" data-id="{{Comment.id}}">
                         <div>
-                            <p class="Comment-Body">
+                            <p class="card-content Comment-Body">
                                 {{Comment.comment_body}}
                             </p>
-                            <span class="Comment-Created-By">Commented by <b>{{Comment.User.name}}</b> on <b>{{format_date Comment.createdAt}}</b></span>
+                            <span class="ml-2 card-footer Comment-Created-By">Commented by <b class="ml-1 mr-1">{{Comment.User.name}}</b> on <b class="ml-1 mr-1">{{format_date Comment.createdAt}}</b></span>
                         </div>
                     </li>
                     <br>
                 {{/each}}
-
-                <br>
-                <button class="Show-Add-Comment" type="button">Add a Comment</button>
-
-                <form hidden class="Add-Comment-Form">
-                    <section>
-                        <label class="New-Comment-Label">Comment:</label>
-                    </section>
-                    <section>
-                        <textarea class="New-Comment-Body" placeholder="Type your comment here"></textarea>
-                    </section>
-                    <section>
-                        <button class="Add-Comment-Button" type="button">Submit Comment</button>
+            </ol>
+            <button class="ml-4 mb-2 button is-info Show-Add-Comment" type="button">Add a Comment</button>
+            <div hidden class="Add-Comment-Form">
+                <form class="pb-2 pl-2 pr-2 field">
+                    <label class="pl-2 pt-2 label New-Comment-Label">Comment:</label>
+                    <section class="control">
+                        <textarea class="ml-2 input New-Comment-Body" placeholder="Type your comment here"></textarea>
+                        <button class="button is-primary ml-2 mt-2 Add-Comment-Button" type="button">Submit Comment</button>
                     </section>
                 </form>
-            </ol>
+            </div>
         </div>
     </div>
     <script src="/js/comments.js"></script>

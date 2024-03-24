@@ -25,13 +25,13 @@ const showEditPostForm = async (event, index) => {
     event.preventDefault();
 
     const hidePost = await event.target.previousElementSibling;
-    const showFormButton = document.querySelectorAll('.EditPost')[index];
     const postForm = document.querySelectorAll('.Edit-Post-Form')[index];
+    const showFormButton = document.querySelectorAll('.EditPost')[index];
     const delButton = document.querySelectorAll('.DeletePost')[index];
-    postForm.removeAttribute("hidden");
-    hidePost.setAttribute("hidden", true);
-    showFormButton.setAttribute("hidden", true);
-    delButton.setAttribute("hidden", true);
+    postForm.classList.remove("is-hidden");
+    hidePost.classList.add("is-hidden");
+    showFormButton.classList.add("is-hidden");
+    delButton.classList.add("is-hidden");
 }
 
 document.querySelectorAll(".EditPost").forEach((el, index) => { el.addEventListener("click",(e) => showEditPostForm(e, index)); });
@@ -108,10 +108,10 @@ const showEditCommentForm = async (event, index) => {
     const showFormButton = document.querySelectorAll('.EditComment')[index];
     const commentForm = document.querySelectorAll('.Edit-Comment-Form')[index];
     const delButton = document.querySelectorAll('.DeleteComment')[index];
-    commentForm.removeAttribute("hidden");
-    hideComment.setAttribute("hidden", true);
-    showFormButton.setAttribute("hidden", true);
-    delButton.setAttribute("hidden", true);
+    commentForm.classList.remove("is-hidden");
+    hideComment.classList.add("is-hidden");
+    showFormButton.classList.add("is-hidden");
+    delButton.classList.add("is-hidden");
 }
 
 document.querySelectorAll(".EditComment").forEach((el, index) => { el.addEventListener("click", (e) => showEditCommentForm(e, index)); });

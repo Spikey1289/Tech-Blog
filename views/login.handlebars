@@ -1,19 +1,15 @@
-<h2>Login</h2>
-<form class="form login-form">
-    <section>
-        <label for="email-login">Email:</label>
-        <input class="form-input" type="text" id="email-login" />
+<form class="field login-form">
+    <label class="label" for="email-login">Email:</label>
+    <section class="control">
+        <input class="input form-input" type="text" id="email-login" />
     </section>
 
+    <label class="label mt-2" for="password-login">Password:</label>
     <section>
-        <label for="password-login">Password:</label>
-        <input class="form-input" type="password" id="password-login" />
-    </section>
-
-    <section>
-        <button class="btn btn-primary" id="login2" type="submit">Log In</button>
+        <input class="input form-input" type="password" id="password-login" />
+        <button class="button is-primary mt-4 btn btn-primary" id="login2" type="submit">Log In</button>
     </section>
 </form>
 <br>
-<button class="signup-button">Sign Up</button>
+<button class="button is-link signup-button">Sign Up</button>
 <script src="/js/login.js"></script>

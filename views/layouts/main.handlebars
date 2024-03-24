@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>Tech Blog </title>
+        <title>Tech Blog</title>
         <link href="
                 https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css
                 " rel="stylesheet">
@@ -12,30 +12,31 @@
 
     <body>
         {{!-- title and nav bar --}}
-        <header>
+        <header class="has-background-primary-00">
 
             {{!-- title --}}
             <div class="columns">
-                <h1 class="column is-two-thirds is-offset-1">The Tech Blog</h1>
+                <h1 class="column mt-1 is-one-third is-offset-1 title has-text-centered">The Tech Blog</h1>
             </div>
 
             {{!-- navbar --}}
-            <div>
-                <nav class="">
+            <div class="box">
+                <nav class="columns is-spaced">
                     {{!-- loads page buttons the user has access to dynamically, based on if the user is logged in --}}
                     {{#if logged_in}}
-                        <a class="button" href="/">
-                            <button class="homepage">Homepage</button>
+                        <a class="column is-narrow" href="/">
+                            <button class="button is-link homepage">Homepage</button>
                         </a>
-                        <a class="button" href="/dashboard">
-                            <button class="dashboard">Dashboard</button>
+                        <a class="column is-narrow" href="/dashboard">
+                            <button class="button is-link dashboard">Dashboard</button>
                         </a>
-
-                        <button class="logout button">Logout</button>
-                        <script src="/js/logout.js"></script>
+                        <div class="column is-narrow">
+                            <button class="logout button is-warning">Logout</button>
+                            <script src="/js/logout.js"></script>
+                        </div>
                     {{!-- if the user has not logged in, only displays the login button --}}
                     {{else}}
-                        <a class="is-1 is-offset-1" href="/login">
+                        <a class="button is-primary column is-1" href="/login">
                             <button>LogIn</button>
                         </a>
                     {{/if}}
@@ -44,7 +45,7 @@
         </header>
 
         {{!-- main body of handlebars --}}
-        <main>
+        <main class="box has-background-primary-05">
             {{{body}}}
         </main>
     </body>

@@ -1,40 +1,41 @@
-{{#each blogPosts as |blogPost|}}
-<section class="Post" data-id="{{blogPost.id}}">
-    <div>
-        <h2 class="Post-Title">
-            {{blogPost.post_title}}
-        </h2>
-        <span class="Created-By">Created by {{blogPost.User.name}} on {{format_date blogPost.createdAt}}</span>
-        <div>
-            <p class="Post-Body">
-                {{post_body}}
-            </p>
-            <p>
-                Comments: {{blogPost.numComments}}
-            </p>
-        </div>
-    </div>
+<section class="fixed-grid has-1-cols">
+    <section class="grid">
+        {{#each blogPosts as |blogPost|}}
+        <section class="Post cell card" data-id="{{blogPost.id}}">
+            <div>
+                <h2 class="card-header-title is-size-3 Post-Title">
+                    {{blogPost.post_title}}
+                </h2>
+                <span class="card-content Created-By">Created by <b>{{blogPost.User.name}}</b> on <b>{{format_date blogPost.createdAt}}</b></span>
+                <div>
+                    <p class="card-content Post-Body">
+                        {{post_body}}
+                    </p>
+                    <p class="card-footer ml-4">
+                        Comments: {{blogPost.numComments}}
+                    </p>
+                </div>
+            </div>
+        </section>
+        {{/each}}
+    </section>
 </section>
-{{/each}}
 {{#if logged_in}}
-<button class="Show-Add-Post">Add a New Post</button>
-<form hidden class="Add-Post-Form">
-    <section>
-        <label class="New-Title-Label">Title:</label>
-    </section>
-    <section>
-        <textarea class="New-Post-Title" placeholder="Add a Post Title"></textarea>
-    </section>
-    <section>
-        <label class="New-Body-Label">Post Content:</label>
-    </section>
-    <section>
-        <textarea class="New-Post-Body" placeholder="Add the Content of your Post"></textarea>
-    </section>
-    <section>
-        <button class="Add-Comment-Button" type="button">Submit Comment</button>
-    </section>
-</form>
+<button class="button is-info Show-Add-Post">Add a New Post</button>
+<div hidden class="Add-Post-Form">
+    <br>
+    <form class="box field">
+        <label class="label New-Title-Label">Title:</label>
+        <section class="control">
+            <textarea class="input New-Post-Title" placeholder="Add a Post Title"></textarea>
+        </section>
+        <label class="mt-2 label New-Body-Label">Post Content:</label>
+        <section class="control">
+            <textarea class="input New-Post-Body" placeholder="Add the Content of your Post"></textarea>
+            <button class="mt-4 button is-primary Add-Comment-Button" type="button">Submit Comment</button>
+        </section>
+    </form>
+</div>
 <script src="/js/posts.js"></script>
 {{else}}
 <h4>Login to Make a New Post</h4>
